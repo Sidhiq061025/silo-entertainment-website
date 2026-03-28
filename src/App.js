@@ -292,7 +292,7 @@ function About() {
     <section id="about" className="section-pad" style={{ position: "relative", padding: "10rem 4rem" }}>
       <div className="grid-halves" style={{ maxWidth: 1300, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7rem", alignItems: "center" }}>
         <Reveal>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>001 / About The Studio</p>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}> About The Studio</p>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,5.5rem)", lineHeight: 0.88, letterSpacing: "0.04em", color: "var(--bone)", marginBottom: "2.2rem" }}>
             CREATING<br />WORLD-CLASS<br />EXPERIENCES
           </h2>
@@ -404,7 +404,7 @@ function Games() {
       <div style={{ maxWidth: 1300, margin: "0 auto" }}>
         <Reveal>
           <div style={{ marginBottom: "5rem" }}>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>002 / Our Games</p>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}> Our Games</p>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,6vw,6rem)", lineHeight: 0.88, color: "var(--bone)" }}>TITLES THAT<br />HAUNT YOU</h2>
           </div>
         </Reveal>
@@ -457,7 +457,7 @@ function Team() {
   return (
     <section id="team" className="section-pad" style={{ padding: "8rem 4rem", maxWidth: 1300, margin: "0 auto" }}>
       <Reveal>
-        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>003 / The Team</p>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>The Team</p>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,5.5rem)", lineHeight: 0.88, color: "var(--bone)", marginBottom: "4.5rem" }}>MINDS BEHIND<br />THE HORROR</h2>
       </Reveal>
       <Reveal delay={0.15}>
@@ -497,7 +497,7 @@ function Socials() {
     <section id="socials" className="section-pad" style={{ padding: "7rem 4rem", textAlign: "center", position: "relative", background: "radial-gradient(ellipse at center, rgba(139,26,26,0.07) 0%, transparent 70%)" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(to right, transparent, var(--blood), transparent)" }} />
       <Reveal>
-        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "0.8rem" }}>004 / Follow The Horror</p>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "0.8rem" }}> Follow The Horror</p>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem,4vw,4.5rem)", color: "var(--bone)", marginBottom: "0.8rem" }}>STAY CONNECTED</h2>
         <p style={{ color: "var(--ash)", fontWeight: 300, marginBottom: "3.5rem", fontSize: "1rem" }}>Follow our journey into darkness across every platform.</p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1.2rem", flexWrap: "wrap" }}>
