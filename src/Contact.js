@@ -127,7 +127,7 @@ export default function Contact() {
   // ── success state ─────────────────────────────────────────────────────────
   if (status === "success") {
     return (
-      <section id="contact" style={{ padding: "8rem 4rem", maxWidth: 900, margin: "0 auto" }}>
+      <section id="contact" className="contact-form" style={{ padding: "8rem 4rem", maxWidth: 900, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "1.8rem" }}>
           <div style={{
             width: 52, height: 52,
@@ -173,7 +173,7 @@ export default function Contact() {
 
   // ── form state ────────────────────────────────────────────────────────────
   return (
-    <section id="contact" style={{ padding: "8rem 4rem", maxWidth: 900, margin: "0 auto" }}>
+    <section id="contact" className="contact-form" style={{ padding: "8rem 4rem", maxWidth: 900, margin: "0 auto" }}>
       {/* heading */}
       <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>
         005 / Get In Touch
@@ -203,7 +203,7 @@ export default function Contact() {
         )}
 
         {/* name + email */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", marginBottom: "2rem" }}>
+        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", marginBottom: "2rem" }}>
           {[
             ["name",  "Your Name",      "text",  "Full name"],
             ["email", "Email Address",  "email", "your@email.com"],

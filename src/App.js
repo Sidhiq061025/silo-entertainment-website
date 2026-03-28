@@ -73,6 +73,69 @@ const globalStyles = `
   }
   a { transition: color 0.2s; text-decoration: none; }
   ::selection { background: var(--blood); color: var(--bone); }
+
+  /* RESPONSIVE CLASSES */
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .section-pad { padding: 6rem 2rem !important; }
+    .legal-pad { padding: 8rem 2rem 4rem !important; }
+    
+    .nav-container { flex-direction: column !important; gap: 1rem !important; padding: 1rem 2rem !important; }
+    .nav-links { flex-wrap: wrap !important; justify-content: center !important; gap: 1rem !important; }
+    
+    .hero-content { text-align: center !important; padding: 0 2rem 4rem !important; }
+    .hero-content h1 { font-size: clamp(3.5rem, 10vw, 7rem) !important; line-height: 1 !important; word-wrap: break-word; }
+    .hero-content p { margin: 1.5rem auto 0 !important; }
+    .hero-buttons { justify-content: center !important; flex-wrap: wrap !important; }
+    .hero-scroll { right: 2rem !important; bottom: 1.5rem !important; }
+    
+    .grid-halves { grid-template-columns: 1fr !important; gap: 4rem !important; }
+    .about-stats { flex-wrap: wrap !important; gap: 2rem !important; }
+    .about-vision { height: 400px !important; }
+    .about-vision-text { font-size: 5rem !important; }
+    
+    .games-row { grid-template-columns: 1fr !important; gap: 2rem !important; text-align: center !important; padding: 2rem 1.5rem !important; border-left: none !important; border-top: 3px solid transparent; }
+    .games-row:hover { border-top-color: var(--crimson) !important; border-left: none !important; }
+    .games-number { display: flex; align-items: baseline; justify-content: center; gap: 1rem; }
+    .games-tags { justify-content: center !important; }
+    .games-status { text-align: center !important; }
+    
+    .team-container { flex-direction: column !important; align-items: center !important; width: 100% !important; padding: 0 !important; }
+    .team-member { flex: none !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
+    
+    .footer-container { flex-direction: column !important; text-align: center !important; gap: 3rem !important; padding: 4rem 2rem !important; }
+    .footer-links { flex-direction: column !important; gap: 2.5rem !important; width: 100% !important; }
+    .footer-copy { text-align: center !important; }
+  }
+
+  @media (max-width: 600px) {
+    .section-pad { padding: 4rem 1.5rem !important; }
+    .legal-pad { padding: 8rem 1.5rem 4rem !important; }
+    .divider-container { padding: 1rem 1.5rem !important; }
+    .nav-container { padding: 1rem !important; }
+    .nav-brand { font-size: 1.8rem !important; }
+    .nav-links { gap: 0.8rem !important; }
+    .nav-links a { font-size: 0.55rem !important; }
+    
+    .hero-container { height: auto !important; min-height: 85vh !important; }
+    .hero-content { padding: 0 1rem 3rem !important; }
+    .hero-content h1 { font-size: clamp(2.5rem, 12vw, 4rem) !important; }
+    
+    .about-vision { height: 300px !important; }
+    .about-vision-text { font-size: 3.5rem !important; }
+    
+    .games-row { text-align: left !important; padding: 2rem 1rem !important; }
+    .games-number { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+    .games-tags { justify-content: flex-start !important; }
+    .games-status { text-align: left !important; }
+    
+    .contact-form { padding: 4rem 1.5rem !important; }
+    .contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  }
 `;
 
 // ─────────────────────────────────────────────
@@ -122,7 +185,7 @@ function Nav() {
   }, []);
 
   return (
-    <nav style={{
+    <nav className="nav-container" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       display: "flex", alignItems: "center", justifyContent: "space-between",
       padding: "1.2rem 4rem",
@@ -131,14 +194,14 @@ function Nav() {
       transition: "background 0.4s, border 0.4s",
       backdropFilter: scrolled ? "blur(12px)" : "none",
     }}>
-      <a href="#hero" style={{
+      <a className="nav-brand" href="#hero" style={{
         fontFamily: "var(--font-display)", fontSize: "2.2rem",
         letterSpacing: "0.12em", color: "var(--bone)",
         animation: "flicker 8s ease-in-out infinite",
       }}>
         SILO<span style={{ color: "var(--crimson)" }}>ENTERTAINMENT</span>
       </a>
-      <ul style={{ display: "flex", gap: "2.5rem", listStyle: "none" }}>
+      <ul className="nav-links" style={{ display: "flex", gap: "2.5rem", listStyle: "none" }}>
         {links.map((l, i) => (
           <li key={i}>
             <a href={`#${l.toLowerCase()}`}
@@ -170,7 +233,7 @@ function Nav() {
 // ─────────────────────────────────────────────
 function Hero() {
   return (
-    <section id="hero" style={{ position: "relative", height: "100vh", minHeight: 1000, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
+    <section id="hero" className="hero-container" style={{ position: "relative", height: "100vh", minHeight: 1000, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
       <div style={{
         position: "absolute", inset: 0,
         backgroundImage: `url(${HERO_IMG})`,
@@ -182,7 +245,7 @@ function Hero() {
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 30%, rgba(4,2,6,0.6) 80%, rgba(4,2,6,0.92) 100%)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(6,6,8,0.5) 75%, var(--black) 100%)" }} />
 
-      <div style={{ position: "relative", zIndex: 2, padding: "0 4rem 6rem", width: "100%" }}>
+      <div className="hero-content" style={{ position: "relative", zIndex: 2, padding: "0 4rem 6rem", width: "100%" }}>
         <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.2rem", animation: "fadeUp 1s ease 0.4s both" }}>
           Silo Entertainment · Horror Game Studio
         </p>
@@ -192,7 +255,7 @@ function Hero() {
         <p style={{ fontFamily: "var(--font-body)", fontStyle: "italic", fontSize: "1.25rem", color: "var(--ash)", marginTop: "1.5rem", maxWidth: 440, animation: "fadeUp 1s ease 0.8s both", lineHeight: 1.6 }}>
           Where imagination turns truly terrifying. We craft fear from the ground up.
         </p>
-        <div style={{ display: "flex", gap: "1.5rem", marginTop: "2.5rem", animation: "fadeUp 1s ease 1s both" }}>
+        <div className="hero-buttons" style={{ display: "flex", gap: "1.5rem", marginTop: "2.5rem", animation: "fadeUp 1s ease 1s both" }}>
           <a href="#games" style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", letterSpacing: "0.2em", padding: "1rem 2.5rem", background: "var(--crimson)", color: "var(--bone)", transition: "background 0.25s" }}
             onMouseEnter={e => e.currentTarget.style.background = "var(--blood)"}
             onMouseLeave={e => e.currentTarget.style.background = "var(--crimson)"}>
@@ -206,7 +269,7 @@ function Hero() {
         </div>
       </div>
 
-      <div style={{ position: "absolute", bottom: "2.5rem", right: "4rem", fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--ash)", writingMode: "vertical-rl", display: "flex", alignItems: "center", gap: "0.8rem", animation: "fadeIn 1.5s ease 1.5s both" }}>
+      <div className="hero-scroll" style={{ position: "absolute", bottom: "2.5rem", right: "4rem", fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--ash)", writingMode: "vertical-rl", display: "flex", alignItems: "center", gap: "0.8rem", animation: "fadeIn 1.5s ease 1.5s both" }}>
         Scroll
         <span style={{ display: "block", width: 1, height: 60, background: "linear-gradient(to bottom, var(--crimson), transparent)", animation: "scrollPulse 2.2s ease-in-out infinite" }} />
       </div>
@@ -219,8 +282,8 @@ function Hero() {
 // ─────────────────────────────────────────────
 function About() {
   return (
-    <section id="about" style={{ position: "relative", padding: "10rem 4rem" }}>
-      <div style={{ maxWidth: 1300, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7rem", alignItems: "center" }}>
+    <section id="about" className="section-pad" style={{ position: "relative", padding: "10rem 4rem" }}>
+      <div className="grid-halves" style={{ maxWidth: 1300, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7rem", alignItems: "center" }}>
         <Reveal>
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>001 / About The Studio</p>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,5.5rem)", lineHeight: 0.88, letterSpacing: "0.04em", color: "var(--bone)", marginBottom: "2.2rem" }}>
@@ -231,7 +294,7 @@ function About() {
             <p style={{ marginTop: "1.2rem" }}>We're united by one belief: <em style={{ color: "var(--bone)" }}>College is the most powerful time to experiment, build, and create something extraordinary.</em></p>
             <p style={{ marginTop: "1.2rem" }}>Our goal is to create games that don't feel "indie" in limitation, but <em style={{ color: "var(--bone)" }}>world-class in execution</em> — with stunning visuals, deep storytelling, and unforgettable player experiences.</p>
           </div>
-          <div style={{ display: "flex", gap: "3rem", marginTop: "3rem" }}>
+          <div className="about-stats" style={{ display: "flex", gap: "3rem", marginTop: "3rem" }}>
             {[["2026", "Founded"], ["Pre-Alpha", "Current Stage"], ["Global", "Vision"]].map(([n, l]) => (
               <div key={l}>
                 <span style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", color: "var(--crimson)", display: "block", lineHeight: 1 }}>{n}</span>
@@ -242,10 +305,10 @@ function About() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <div style={{ position: "relative", height: 500 }}>
+          <div className="about-vision" style={{ position: "relative", height: 500 }}>
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(139,26,26,0.18) 0%, rgba(6,6,8,0.95) 70%)", border: "1px solid rgba(139,26,26,0.25)", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "2.5rem" }}>
               <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,26,26,0.025) 3px, rgba(139,26,26,0.025) 4px)" }} />
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "var(--font-display)", fontSize: "8.5rem", color: "rgba(139,26,26,0.07)", whiteSpace: "nowrap", letterSpacing: "0.05em" }}>VISION</div>
+              <div className="about-vision-text" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "var(--font-display)", fontSize: "8.5rem", color: "rgba(139,26,26,0.07)", whiteSpace: "nowrap", letterSpacing: "0.05em" }}>VISION</div>
               <div style={{ position: "absolute", top: 40, right: 40, width: 80, height: 80, border: "1px solid rgba(139,26,26,0.2)", transform: "rotate(45deg)" }} />
               <div style={{ position: "absolute", top: 52, right: 52, width: 56, height: 56, border: "1px solid rgba(139,26,26,0.12)", transform: "rotate(45deg)" }} />
               <div style={{ position: "relative", zIndex: 2 }}>
@@ -258,7 +321,7 @@ function About() {
         </Reveal>
       </div>
       
-      <div style={{ maxWidth: 1300, margin: "8rem auto 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem" }}>
+      <div className="grid-halves" style={{ maxWidth: 1300, margin: "8rem auto 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem" }}>
         <Reveal delay={0.1}>
           <h3 style={{ fontFamily: "var(--font-display)", fontSize: "2.2rem", color: "var(--bone)", marginBottom: "1.5rem" }}>THE GAME EXPERIENCE</h3>
           <ul style={{ color: "var(--ash)", fontSize: "1.05rem", lineHeight: 1.8, paddingLeft: "1.2rem", margin: 0, listStyleType: "square" }}>
@@ -288,7 +351,7 @@ function About() {
 // ─────────────────────────────────────────────
 function Divider() {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "1rem 4rem", maxWidth: 1300, margin: "0 auto" }}>
+    <div className="divider-container" style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "1rem 4rem", maxWidth: 1300, margin: "0 auto" }}>
       <div style={{ flex: 1, height: 1, background: "linear-gradient(to right, transparent, rgba(139,26,26,0.3))" }} />
       <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.4em", color: "rgba(139,26,26,0.4)" }}>✦</span>
       <div style={{ flex: 1, height: 1, background: "linear-gradient(to left, transparent, rgba(139,26,26,0.3))" }} />
@@ -329,7 +392,7 @@ const GAMES = [
 function Games() {
   const [hov, setHov] = useState(null);
   return (
-    <section id="games" style={{ padding: "8rem 4rem", position: "relative" }}>
+    <section id="games" className="section-pad" style={{ padding: "8rem 4rem", position: "relative" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(to right, transparent, var(--blood), transparent)" }} />
       <div style={{ maxWidth: 1300, margin: "0 auto" }}>
         <Reveal>
@@ -341,23 +404,23 @@ function Games() {
         <div style={{ display: "grid", gap: "2px", background: "rgba(139,26,26,0.15)" }}>
           {GAMES.map((g, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div
+              <div className="games-row"
                 onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}
                 style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: "3rem", alignItems: "center", padding: "3rem", background: hov === i ? "rgba(139,26,26,0.06)" : "var(--deep)", transition: "background 0.4s", position: "relative", cursor: "default", borderLeft: hov === i ? "3px solid var(--crimson)" : "3px solid transparent" }}>
-                <div>
+                <div className="games-number">
                   <span style={{ fontFamily: "var(--font-display)", fontSize: "5rem", color: "rgba(139,26,26,0.15)", lineHeight: 1, display: "block" }}>0{i + 1}</span>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "var(--crimson)" }}>{g.tag}</span>
                 </div>
                 <div>
                   <h3 style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", letterSpacing: "0.06em", color: "var(--bone)", marginBottom: "0.8rem" }}>{g.title}</h3>
                   <p style={{ fontSize: "1rem", color: "var(--ash)", fontWeight: 300, lineHeight: 1.75, marginBottom: "1.2rem", maxWidth: 480 }}>{g.desc}</p>
-                  <div style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap" }}>
+                  <div className="games-tags" style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap" }}>
                     {g.tags.map(t => (
                       <span key={t} style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ash)", border: "1px solid rgba(139,26,26,0.3)", padding: "0.3rem 0.8rem" }}>{t}</span>
                     ))}
                   </div>
                 </div>
-                <div style={{ textAlign: "right" }}>
+                <div className="games-status" style={{ textAlign: "right" }}>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: g.status === "In Development" || g.status === "Pre-Alpha" ? "var(--ember)" : "var(--ash)", marginBottom: "0.5rem" }}>
                     <span style={{ width: 6, height: 6, borderRadius: "50%", background: g.status === "In Development" || g.status === "Pre-Alpha" ? "var(--ember)" : "rgba(184,168,154,0.4)", display: "block" }} />
                     {g.status}
@@ -385,15 +448,15 @@ const TEAM = [
 function Team() {
   const [hov, setHov] = useState(null);
   return (
-    <section id="team" style={{ padding: "8rem 4rem", maxWidth: 1300, margin: "0 auto" }}>
+    <section id="team" className="section-pad" style={{ padding: "8rem 4rem", maxWidth: 1300, margin: "0 auto" }}>
       <Reveal>
         <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>003 / The Team</p>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,5.5rem)", lineHeight: 0.88, color: "var(--bone)", marginBottom: "4.5rem" }}>MINDS BEHIND<br />THE HORROR</h2>
       </Reveal>
       <Reveal delay={0.15}>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2px", background: "rgba(139,26,26,0.15)", margin: "0 auto", width: "fit-content" }}>
+        <div className="team-container" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2px", background: "rgba(139,26,26,0.15)", margin: "0 auto", width: "fit-content" }}>
           {TEAM.map((m, i) => (
-            <div key={i}
+            <div key={i} className="team-member"
               onMouseEnter={() => setHov(i)} onMouseLeave={() => setHov(null)}
               style={{ flex: "0 1 320px", width: "100%", background: hov === i ? "rgba(139,26,26,0.07)" : "var(--deep)", padding: "2.8rem 2.2rem", transition: "background 0.35s", position: "relative", borderTop: hov === i ? "2px solid var(--crimson)" : "2px solid transparent" }}>
               <div style={{ width: 68, height: 68, background: hov === i ? "linear-gradient(135deg, var(--blood), #1a0808)" : "linear-gradient(135deg, #1e0c0c, var(--deep))", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: "1.7rem", color: "var(--bone)", marginBottom: "1.8rem", border: "1px solid rgba(139,26,26,0.3)", transition: "background 0.35s" }}>
@@ -424,7 +487,7 @@ const SOCIALS = [
 function Socials() {
   const [hov, setHov] = useState(null);
   return (
-    <section id="socials" style={{ padding: "7rem 4rem", textAlign: "center", position: "relative", background: "radial-gradient(ellipse at center, rgba(139,26,26,0.07) 0%, transparent 70%)" }}>
+    <section id="socials" className="section-pad" style={{ padding: "7rem 4rem", textAlign: "center", position: "relative", background: "radial-gradient(ellipse at center, rgba(139,26,26,0.07) 0%, transparent 70%)" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(to right, transparent, var(--blood), transparent)" }} />
       <Reveal>
         <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "0.8rem" }}>004 / Follow The Horror</p>
@@ -450,15 +513,15 @@ function Socials() {
 // ─────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ padding: "4rem", borderTop: "1px solid rgba(139,26,26,0.18)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
-      <div>
+    <footer className="footer-container" style={{ padding: "4rem", borderTop: "1px solid rgba(139,26,26,0.18)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
+      <div className="footer-copy">
         <div style={{ fontFamily: "var(--font-display)", fontSize: "1.8rem", letterSpacing: "0.12em", color: "var(--bone)", marginBottom: "0.4rem" }}>
           SILO<span style={{ color: "var(--crimson)" }}>ENTERTAINMENT</span>
         </div>
         <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.2em", color: "rgba(184,168,154,0.4)", textTransform: "uppercase" }}>Independent Horror Game Studio</p>
       </div>
 
-      <div style={{ display: "flex", gap: "3.5rem" }}>
+      <div className="footer-links" style={{ display: "flex", gap: "3.5rem" }}>
         {[
           ["Studio", [{ name: "About Us", url: "#about" }, { name: "Our Games", url: "#games" }, { name: "The Team", url: "#team" }]],
           ["Connect", [{ name: "LinkedIn", url: "https://www.linkedin.com/company/silo-entertainment?trk=public_profile_topcard-current-company" }, { name: "Instagram", url: "https://www.instagram.com/p/DWE-dcqjR19/?igsh=ZWhjZjZ5N2xqd2du" }, { name: "WhatsApp", url: "https://wa.me/9321887852" }]],
@@ -475,7 +538,7 @@ function Footer() {
         ))}
       </div>
 
-      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.18em", color: "rgba(184,168,154,0.3)", textAlign: "right" }}>
+      <p className="footer-copy" style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", letterSpacing: "0.18em", color: "rgba(184,168,154,0.3)", textAlign: "right" }}>
         © 2026 Silo Entertainment<br />All rights reserved.
       </p>
     </footer>
@@ -491,7 +554,7 @@ function PrivacyPolicy() {
   }, []);
 
   return (
-    <section id="privacy" style={{ padding: "10rem 4rem 6rem", maxWidth: 1000, margin: "0 auto", color: "var(--ash)", lineHeight: 1.8 }}>
+    <section id="privacy" className="legal-pad" style={{ padding: "10rem 4rem 6rem", maxWidth: 1000, margin: "0 auto", color: "var(--ash)", lineHeight: 1.8 }}>
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,4.5rem)", color: "var(--bone)", marginBottom: "2rem" }}>
         PRIVACY <span style={{ color: "var(--crimson)" }}>POLICY</span>
       </h1>
@@ -524,7 +587,7 @@ function TermsOfService() {
   }, []);
 
   return (
-    <section id="terms" style={{ padding: "10rem 4rem 6rem", maxWidth: 1000, margin: "0 auto", color: "var(--ash)", lineHeight: 1.8 }}>
+    <section id="terms" className="legal-pad" style={{ padding: "10rem 4rem 6rem", maxWidth: 1000, margin: "0 auto", color: "var(--ash)", lineHeight: 1.8 }}>
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,4.5rem)", color: "var(--bone)", marginBottom: "2rem" }}>
         TERMS & <span style={{ color: "var(--crimson)" }}>SERVICES</span>
       </h1>
