@@ -176,7 +176,7 @@ function Reveal({ children, delay = 0, style = {} }) {
 function Nav() {
   const [hov, setHov] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const links = ["About", "Games", "Team", "Socials", "Contact"];
+  const links = ["About", "Game Jam", "Games", "Team", "Socials", "Contact"];
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -204,7 +204,14 @@ function Nav() {
       <ul className="nav-links" style={{ display: "flex", gap: "2.5rem", listStyle: "none" }}>
         {links.map((l, i) => (
           <li key={i}>
-            <a href={`#${l.toLowerCase()}`}
+            <a href={l === "Game Jam" ? "/gamejam" : `#${l.toLowerCase()}`}
+              onClick={(e) => {
+                  if (l === "Game Jam") {
+                    e.preventDefault();
+                    window.location.href = "https://siloentertainment.in/gamejam";
+                  }
+              }}
+
               style={{
                 fontFamily: "var(--font-mono)", fontSize: "0.68rem",
                 letterSpacing: "0.22em", textTransform: "uppercase",
@@ -320,7 +327,7 @@ function About() {
           </div>
         </Reveal>
       </div>
-      
+
       <div className="grid-halves" style={{ maxWidth: 1300, margin: "8rem auto 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem" }}>
         <Reveal delay={0.1}>
           <h3 style={{ fontFamily: "var(--font-display)", fontSize: "2.2rem", color: "var(--bone)", marginBottom: "1.5rem" }}>THE GAME EXPERIENCE</h3>
@@ -559,7 +566,7 @@ function PrivacyPolicy() {
         PRIVACY <span style={{ color: "var(--crimson)" }}>POLICY</span>
       </h1>
       <p style={{ marginBottom: "2rem" }}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-      
+
       <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "1.2rem", color: "var(--bone)", marginBottom: "1rem", marginTop: "3rem" }}>1. Information We Collect</h3>
       <p style={{ marginBottom: "1.5rem" }}>We may collect personal information that you provide directly to us, such as your name, email address, and any other contact details when you subscribe to our newsletter, submit a contact form, or interact with our community channels.</p>
 
@@ -592,7 +599,7 @@ function TermsOfService() {
         TERMS & <span style={{ color: "var(--crimson)" }}>SERVICES</span>
       </h1>
       <p style={{ marginBottom: "2rem" }}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-      
+
       <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "1.2rem", color: "var(--bone)", marginBottom: "1rem", marginTop: "3rem" }}>1. Acceptance of Terms</h3>
       <p style={{ marginBottom: "1.5rem" }}>By accessing or using our website and games, you agree to be bound by these Terms & Services and all applicable laws and regulations.</p>
 
