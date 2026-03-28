@@ -14,9 +14,9 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 // ─── EmailJS credentials ───────────────────────────────────────────────────
-const EMAILJS_SERVICE_ID  = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY  = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_rtmyfg5";
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_0y93qj5";
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "ByGgg7Dugh-3Vx0yO";
 // ──────────────────────────────────────────────────────────────────────────
 
 const INQUIRY_SUBJECTS = [
@@ -35,8 +35,8 @@ export default function Contact() {
     subject: INQUIRY_SUBJECTS[0],
     message: "",
   });
-  const [status, setStatus]   = useState("idle"); // idle | loading | success | error
-  const [errors, setErrors]   = useState({});
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [errors, setErrors] = useState({});
   const [focused, setFocused] = useState(null);
 
   // ── validation ────────────────────────────────────────────────────────────
@@ -75,9 +75,7 @@ export default function Contact() {
           subject: form.subject,
           message: form.message,
         },
-        {
-          publicKey: EMAILJS_PUBLIC_KEY,
-        }
+        EMAILJS_PUBLIC_KEY
       );
 
       console.log("SUCCESS:", res);
@@ -98,13 +96,12 @@ export default function Contact() {
     width: "100%",
     background: focused === field ? "rgba(139,26,26,0.04)" : "transparent",
     border: "none",
-    borderBottom: `1px solid ${
-      errors[field]
+    borderBottom: `1px solid ${errors[field]
         ? "#e8541a"
         : focused === field
-        ? "var(--crimson)"
-        : "rgba(139,26,26,0.25)"
-    }`,
+          ? "var(--crimson)"
+          : "rgba(139,26,26,0.25)"
+      }`,
     color: "var(--bone)",
     fontFamily: "var(--font-body)",
     fontSize: "1.05rem",
@@ -162,8 +159,10 @@ export default function Contact() {
             transition: "all 0.25s",
           }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--crimson)"; e.currentTarget.style.color = "var(--bone)"; }}
-          onMouseLeave={e => { e.currentT
-            arget.style.borderColor = "rgba(139,26,26,0.3)"; e.currentTarget.style.color = "var(--ash)"; }}
+          onMouseLeave={e => {
+            e.currentT
+            arget.style.borderColor = "rgba(139,26,26,0.3)"; e.currentTarget.style.color = "var(--ash)";
+          }}
         >
           ← Send Another Message
         </button>
@@ -205,8 +204,8 @@ export default function Contact() {
         {/* name + email */}
         <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", marginBottom: "2rem" }}>
           {[
-            ["name",  "Your Name",      "text",  "Full name"],
-            ["email", "Email Address",  "email", "your@email.com"],
+            ["name", "Your Name", "text", "Full name"],
+            ["email", "Email Address", "email", "your@email.com"],
           ].map(([field, label, type, ph]) => (
             <div key={field}>
               <label style={labelStyle(field)}>{label}</label>
