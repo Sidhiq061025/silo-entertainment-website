@@ -175,7 +175,7 @@ export default function Contact() {
     <section id="contact" className="contact-form" style={{ padding: "8rem 4rem", maxWidth: 900, margin: "0 auto" }}>
       {/* heading */}
       <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>
-        005 / Get In Touch
+        Get In Touch
       </p>
       <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3.5rem,7vw,7rem)", lineHeight: 0.88, letterSpacing: "0.02em", color: "var(--bone)", marginBottom: "1.5rem" }}>
         <span style={{ color: "var(--crimson)" }}>REACH</span><br />OUT

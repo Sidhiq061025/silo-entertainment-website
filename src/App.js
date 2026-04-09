@@ -176,7 +176,7 @@ function Reveal({ children, delay = 0, style = {} }) {
 function Nav() {
   const [hov, setHov] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const links = ["About", "Game Jam", "Games", "Team", "Socials", "Contact"];
+  const links = ["About", "Games", "Team", "Socials", "Contact"];
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -188,11 +188,12 @@ function Nav() {
     <nav className="nav-container" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: "1.2rem 4rem",
+      padding: "2.2rem 4rem",
       background: scrolled ? "rgba(6,6,8,0.97)" : "linear-gradient(to bottom,rgba(6,6,8,0.9),transparent)",
       borderBottom: scrolled ? "1px solid rgba(139,26,26,0.2)" : "none",
       transition: "background 0.4s, border 0.4s",
       backdropFilter: scrolled ? "blur(12px)" : "none",
+      fontWeight: "700", // ✅ add this
     }}>
       <a className="nav-brand" href="#hero" style={{
         fontFamily: "var(--font-display)", fontSize: "2.2rem",
@@ -244,7 +245,7 @@ function Hero() {
       <div style={{
         position: "absolute", inset: 0,
         backgroundImage: `url(${HERO_IMG})`,
-        backgroundSize: "90%", backgroundPosition: "center 10%", backgroundRepeat: "no-repeat",
+        backgroundSize: "100%", backgroundPosition: "center 10%", backgroundRepeat: "no-repeat",
       }} />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(6,6,8,0.15) 0%, rgba(6,6,8,0.0) 25%, rgba(6,6,8,0.35) 60%, rgba(6,6,8,0.88) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 60% 40%, rgba(139,26,26,0.12) 0%, transparent 60%)" }} />
@@ -298,11 +299,10 @@ function About() {
           </h2>
           <div style={{ fontSize: "1.05rem", color: "var(--ash)", lineHeight: 1.9, fontWeight: 300 }}>
             <p><strong>Silo Entertainment</strong> is an indie game studio founded in February 2026 at Vidyalankar College. What started as a solo vision has quickly grown into a passionate team of creators.</p>
-            <p style={{ marginTop: "1.2rem" }}>We're united by one belief: <em style={{ color: "var(--bone)" }}>College is the most powerful time to experiment, build, and create something extraordinary.</em></p>
-            <p style={{ marginTop: "1.2rem" }}>Our goal is to create games that don't feel "indie" in limitation, but <em style={{ color: "var(--bone)" }}>world-class in execution</em> — with stunning visuals, deep storytelling, and unforgettable player experiences.</p>
+            <p style={{ marginTop: "1.2rem" }}>Our goal is to create games that don't feel "indie" in limitation, but <em style={{ color: "var(--bone)" }}>world class in execution</em>  with stunning visuals, deep storytelling, and unforgettable player experiences.</p>
           </div>
           <div className="about-stats" style={{ display: "flex", gap: "3rem", marginTop: "3rem" }}>
-            {[["2026", "Founded"], ["Pre-Alpha", "Current Stage"], ["Global", "Vision"]].map(([n, l]) => (
+            {[["2026", "Founded"], ["Pre-Alpha", "Current Stage"],].map(([n, l]) => (
               <div key={l}>
                 <span style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", color: "var(--crimson)", display: "block", lineHeight: 1 }}>{n}</span>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ash)" }}>{l}</span>
@@ -315,7 +315,7 @@ function About() {
           <div className="about-vision" style={{ position: "relative", height: 500 }}>
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(139,26,26,0.18) 0%, rgba(6,6,8,0.95) 70%)", border: "1px solid rgba(139,26,26,0.25)", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "2.5rem" }}>
               <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,26,26,0.025) 3px, rgba(139,26,26,0.025) 4px)" }} />
-              <div className="about-vision-text" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "var(--font-display)", fontSize: "8.5rem", color: "rgba(139,26,26,0.07)", whiteSpace: "nowrap", letterSpacing: "0.05em" }}>VISION</div>
+              <div className="about-vision-text" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "var(--font-display)", fontSize: "8.5rem", color: "rgba(139,26,26,0.18)", whiteSpace: "nowrap", letterSpacing: "0.05em" }}>VISION</div>
               <div style={{ position: "absolute", top: 40, right: 40, width: 80, height: 80, border: "1px solid rgba(139,26,26,0.2)", transform: "rotate(45deg)" }} />
               <div style={{ position: "absolute", top: 52, right: 52, width: 56, height: 56, border: "1px solid rgba(139,26,26,0.12)", transform: "rotate(45deg)" }} />
               <div style={{ position: "relative", zIndex: 2 }}>
@@ -447,8 +447,8 @@ function Games() {
 //  TEAM
 // ─────────────────────────────────────────────
 const TEAM = [
-  { init: "AS", name: "Abubackar Sidhiq", role: "Founder", bio: "Unity & Unreal specialist. Builds the architecture of fear from the code up." },
-  { init: "AD", name: "Anand Dubey", role: "Co-Founder | Marketing & Environment Head", bio: "Drives the studio's outreach and crafts the chilling immersive environments that make players leave the lights on." },
+  { init: "AS", name: "Abubackar Sidhiq", role: "Founder", bio: "The mind behind Silo Entertainment. Siddhiq shapes the studio’s direction, blending creativity with ambition to build experiences that go beyond just games worlds that players feel, remember, and return to." },
+  { init: "AD", name: "Anand Dubey", role: "Co-Founder & Marketing Head ", bio: "Drives the studio's outreach and crafts the chilling immersive environments that make players leave the lights on." },
 
 ];
 
@@ -458,7 +458,7 @@ function Team() {
     <section id="team" className="section-pad" style={{ padding: "8rem 4rem", maxWidth: 1300, margin: "0 auto" }}>
       <Reveal>
         <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "var(--crimson)", marginBottom: "1.5rem" }}>The Team</p>
-        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,5.5rem)", lineHeight: 0.88, color: "var(--bone)", marginBottom: "4.5rem" }}>MINDS BEHIND<br />THE HORROR</h2>
+        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,5vw,5.5rem)", lineHeight: 0.88, color: "var(--bone)", marginBottom: "4.5rem" }}>MINDS BEHIND<br /> SILO ENTERTAINMENT</h2>
       </Reveal>
       <Reveal delay={0.15}>
         <div className="team-container" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2px", background: "rgba(139,26,26,0.15)", margin: "0 auto", width: "fit-content" }}>
